@@ -5,70 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GioXi-8 Computer Project</title>
   <style>
-    body {
-      font-family: Poppins, sans-serif;
-      background: #fdfdfd;
-      color: #222;
-      max-width: 850px;
-      margin: 60px auto;
-      line-height: 1.6;
-      padding: 0 15px;
-    }
-    h1 {
-      color: #d22;
-      font-size: 2.2em;
-      border-bottom: 2px solid #d22;
-      padding-bottom: .2em;
-    }
-    h2 {
-      color: #444;
-      margin-top: 1.6em;
-    }
-    code {
-      background: #eee;
-      padding: 2px 5px;
-      border-radius: 4px;
-    }
-    footer {
-      margin-top: 3em;
-      border-top: 1px solid #ccc;
-      padding-top: 1em;
-      font-size: .9em;
-      color: #666;
-    }
+    body { font-family: Poppins, sans-serif; background:#fdfdfd; color:#222;
+           max-width:850px; margin:60px auto; line-height:1.6; padding:0 15px; }
+    h1 { color:#d22; border-bottom:2px solid #d22; padding-bottom:.2em; }
+    h2 { color:#444; margin-top:1.6em; }
+    nav { text-align:right; margin-bottom:1em; }
+    nav button { background:none; border:none; color:#555; cursor:pointer;
+                 font-weight:bold; margin-left:1em; }
+    nav button:hover { color:#d22; }
+    .lang { display:none; }
   </style>
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('.lang').forEach(el => el.style.display='none');
+      document.querySelectorAll('.lang-'+lang).forEach(el => el.style.display='block');
+      localStorage.setItem('gioxiLang', lang);
+    }
+    window.onload = () => setLang(localStorage.getItem('gioxiLang') || 'en');
+  </script>
 </head>
 <body>
 
-  <h1>GioXi-8</h1>
-  <p><strong>GioXi-8</strong> is a custom 8-bit computer based on the <b>Zilog Z80</b> CPU with a <b>Raspberry Pi Pico</b> acting as a modern video, audio and storage co-processor.</p>
+  <nav>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('it')">IT</button>
+  </nav>
 
-  <h2>System Overview</h2>
-  <ul>
-    <li>CPU: Z80 @ 8 MHz</li>
-    <li>RAM: 64 KB static</li>
-    <li>ROM: 16 KB (monitor + Forth)</li>
-    <li>Video/Audio/SD handled by RP2040</li>
-    <li>Output: composite PAL or VGA</li>
-    <li>Audio: PWM stereo or I²S DAC</li>
-    <li>Storage: microSD (SPI)</li>
-  </ul>
+  <!-- ENGLISH VERSION -->
+  <div class="lang lang-en">
+    <h1>GioXi-8</h1>
+    <p><strong>GioXi-8</strong> is a custom 8-bit computer based on the <b>Zilog Z80</b> CPU, with a <b>Raspberry Pi Pico</b> acting as a modern co-processor for video, audio and storage.</p>
 
-  <h2>Project Status</h2>
-  <p>Currently working on the hardware design in KiCad and finalizing the memory/bus architecture.  
-  The goal is a modular 8-bit system inspired by classic home computers but enhanced with modern peripherals.</p>
+    <h2>Project idea</h2>
+    <p>This site documents the complete design process — from the first schematic choices to the final hardware decisions.  
+    Every step explains what worked, what didn’t, and why each technical solution was chosen.</p>
 
-  <h2>Next Steps</h2>
-  <ol>
-    <li>Finish schematic and PCB layout.</li>
-    <li>Define ROM structure and Forth kernel.</li>
-    <li>Develop Pico firmware (video/audio).</li>
-    <li>Assemble prototype and run first boot.</li>
-  </ol>
+    <h2>System overview</h2>
+    <ul>
+      <li>CPU – Z80 @ 8 MHz</li>
+      <li>RAM – 64 KB static</li>
+      <li>ROM – 16 KB (Monitor + Forth)</li>
+      <li>Co-processor – RP2040 (Video/Audio/SD)</li>
+      <li>Video output – composite PAL or VGA</li>
+      <li>Audio – PWM stereo or I²S DAC</li>
+      <li>Storage – microSD (SPI)</li>
+    </ul>
 
-  <footer>
-    © 2025 Massy Mastroleo — Gioxi-8 Project  
-  </footer>
+    <p><a href="/devlog/">→ Development Log</a></p>
+  </div>
+
+  <!-- VERSIONE ITALIANA -->
+  <div class="lang lang-it">
+    <h1>GioXi-8</h1>
+    <p><strong>GioXi-8</strong> è un computer 8-bit personalizzato basato sulla CPU <b>Zilog Z80</b>, con un <b>Raspberry Pi Pico</b> che funge da co-processore moderno per video, audio e memoria di massa.</p>
+
+    <h2>L’idea</h2>
+    <p>Questo sito racconta l’intero percorso di progettazione – dalle prime scelte sullo schema alle decisioni hardware definitive.  
+    Ogni passaggio spiega cosa ha funzionato, cosa no e perché ho scelto una certa soluzione tecnica.</p>
+
+    <h2>Specifiche</h2>
+    <ul>
+      <li>CPU – Z80 @ 8 MHz</li>
+      <li>RAM – 64 KB statici</li>
+      <li>ROM – 16 KB (Monitor + Forth)</li>
+      <li>Co-processore – RP2040 (Video/Audio/SD)</li>
+      <li>Uscita video – PAL composito o VGA</li>
+      <li>Audio – PWM stereo o DAC I²S</li>
+      <li>Archiviazione – microSD (SPI)</li>
+    </ul>
+
+    <p><a href="/devlog/">→ Diario di sviluppo</a></p>
+  </div>
 
 </body>
 </html>
