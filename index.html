@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gioxi-8 Computer Project</title>
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      background: #fdfdfd;
+      color: #222;
+      max-width: 850px;
+      margin: 60px auto;
+      line-height: 1.6;
+      padding: 0 15px;
+    }
+    h1 {
+      color: #d22;
+      font-size: 2.2em;
+      border-bottom: 2px solid #d22;
+      padding-bottom: .2em;
+    }
+    h2 {
+      color: #444;
+      margin-top: 1.6em;
+    }
+    code {
+      background: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    footer {
+      margin-top: 3em;
+      border-top: 1px solid #ccc;
+      padding-top: 1em;
+      font-size: .9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Gioxi-8</h1>
+  <p><strong>Gioxi-8</strong> is a custom 8-bit computer based on the <b>Zilog Z80</b> CPU with a <b>Raspberry Pi Pico</b> acting as a modern video, audio and storage co-processor.</p>
+
+  <h2>System Overview</h2>
+  <ul>
+    <li>CPU: Z80 @ 8 MHz</li>
+    <li>RAM: 64 KB static</li>
+    <li>ROM: 16 KB (monitor + Forth)</li>
+    <li>Video/Audio/SD handled by RP2040</li>
+    <li>Output: composite PAL or VGA</li>
+    <li>Audio: PWM stereo or I²S DAC</li>
+    <li>Storage: microSD (SPI)</li>
+  </ul>
+
+  <h2>Project Status</h2>
+  <p>Currently working on the hardware design in KiCad and finalizing the memory/bus architecture.  
+  The goal is a modular 8-bit system inspired by classic home computers but enhanced with modern peripherals.</p>
+
+  <h2>Next Steps</h2>
+  <ol>
+    <li>Finish schematic and PCB layout.</li>
+    <li>Define ROM structure and Forth kernel.</li>
+    <li>Develop Pico firmware (video/audio).</li>
+    <li>Assemble prototype and run first boot.</li>
+  </ol>
+
+  <footer>
+    © 2025 Massy Mastroleo — Gioxi-8 Project  
+  </footer>
+
+</body>
+</html>
