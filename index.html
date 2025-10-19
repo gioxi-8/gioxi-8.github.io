@@ -1,27 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GioXi-8 Computer Project</title>
+  <title>GioXi 8 — Diario di Progettazione</title>
+
   <style>
-    body { font-family: Poppins, sans-serif; background:#fdfdfd; color:#222;
-           max-width:850px; margin:60px auto; line-height:1.6; padding:0 15px; }
-    h1 { color:#d22; border-bottom:2px solid #d22; padding-bottom:.2em; }
-    h2 { color:#444; margin-top:1.6em; }
-    nav { text-align:right; margin-bottom:1em; }
-    nav button { background:none; border:none; color:#555; cursor:pointer;
-                 font-weight:bold; margin-left:1em; }
+    body {
+      font-family: Poppins, sans-serif;
+      background:#fdfdfd;
+      color:#222;
+      max-width:850px;
+      margin:60px auto;
+      line-height:1.6;
+      padding:0 15px;
+    }
+    h1 {
+      color:#d22;
+      border-bottom:2px solid #d22;
+      padding-bottom:.2em;
+    }
+    h2 {
+      color:#444;
+      margin-top:1.6em;
+    }
+    nav {
+      text-align:right;
+      margin-bottom:1em;
+    }
+    nav button {
+      background:none;
+      border:none;
+      color:#555;
+      cursor:pointer;
+      font-weight:bold;
+      margin-left:1em;
+    }
     nav button:hover { color:#d22; }
     .lang { display:none; }
   </style>
+
+  <noscript><style>.lang{display:block}</style></noscript>
+
   <script>
     function setLang(lang) {
       document.querySelectorAll('.lang').forEach(el => el.style.display='none');
       document.querySelectorAll('.lang-'+lang).forEach(el => el.style.display='block');
       localStorage.setItem('gioxiLang', lang);
     }
-    window.onload = () => setLang(localStorage.getItem('gioxiLang') || 'en');
+    window.onload = () => setLang(localStorage.getItem('gioxiLang') || 'it');
   </script>
 </head>
 <body>
@@ -31,51 +58,50 @@
     <button onclick="setLang('it')">IT</button>
   </nav>
 
-  <!-- ENGLISH VERSION -->
-  <div class="lang lang-en">
-    <h1>GioXi-8</h1>
-    <p><strong>GioXi-8</strong> is a custom 8-bit computer based on the <b>Zilog Z80</b> CPU, with a <b>Raspberry Pi Pico</b> acting as a modern co-processor for video, audio and storage.</p>
-
-    <h2>Project idea</h2>
-    <p>This site documents the complete design process — from the first schematic choices to the final hardware decisions.  
-    Every step explains what worked, what didn’t, and why each technical solution was chosen.</p>
-
-    <h2>System overview</h2>
-    <ul>
-      <li>CPU – Z80 @ 8 MHz</li>
-      <li>RAM – 64 KB static</li>
-      <li>ROM – 16 KB (Monitor + Forth)</li>
-      <li>Co-processor – RP2040 (Video/Audio/SD)</li>
-      <li>Video output – composite PAL or VGA</li>
-      <li>Audio – PWM stereo or I²S DAC</li>
-      <li>Storage – microSD (SPI)</li>
-    </ul>
-
-    <p><a href="/devlog/">→ Development Log</a></p>
-  </div>
-
   <!-- VERSIONE ITALIANA -->
   <div class="lang lang-it">
-    <h1>GioXi-8</h1>
-    <p><strong>GioXi-8</strong> è un computer 8-bit personalizzato basato sulla CPU <b>Zilog Z80</b>, con un <b>Raspberry Pi Pico</b> che funge da co-processore moderno per video, audio e memoria di massa.</p>
+    <h1>GioXi 8 — Diario di progettazione</h1>
 
-    <h2>L’idea</h2>
-    <p>Questo sito racconta l’intero percorso di progettazione – dalle prime scelte sullo schema alle decisioni hardware definitive.  
-    Ogni passaggio spiega cosa ha funzionato, cosa no e perché ho scelto una certa soluzione tecnica.</p>
+    <p><strong>GioXi 8</strong> nasce dal desiderio di costruire un computer 8-bit davvero mio.  
+    Non una replica, ma un progetto che unisse la logica semplice dello <b>Z80</b> con un co-processore moderno — il <b>Raspberry Pi Pico</b> — per gestire video, audio e memoria di massa.</p>
 
-    <h2>Specifiche</h2>
+    <h2>L’approccio</h2>
+    <p>Questo sito non descrive un prodotto finito, ma un percorso.  
+    Ogni pagina racconta una decisione: perché ho scelto un componente, quali alternative ho scartato e cosa ho imparato nel processo.  
+    Tutto parte da un’idea semplice: capire come funziona davvero un computer, partendo dai bit.</p>
+
+    <h2>Ultimi passaggi</h2>
     <ul>
-      <li>CPU – Z80 @ 8 MHz</li>
-      <li>RAM – 64 KB statici</li>
-      <li>ROM – 16 KB (Monitor + Forth)</li>
-      <li>Co-processore – RP2040 (Video/Audio/SD)</li>
-      <li>Uscita video – PAL composito o VGA</li>
-      <li>Audio – PWM stereo o DAC I²S</li>
-      <li>Archiviazione – microSD (SPI)</li>
+      <li>Valutazione 7805 vs MP1584 per l’alimentazione.</li>
+      <li>Definizione della logica ROMOFF: ROM attiva di default.</li>
+      <li>Prime prove di mappa memoria e gestione I/O.</li>
     </ul>
 
-    <p><a href="/devlog/">→ Diario di sviluppo</a></p>
+    <p><a href="/devlog/">→ Diario tecnico completo</a></p>
+  </div>
+
+  <!-- ENGLISH VERSION -->
+  <div class="lang lang-en">
+    <h1>GioXi 8 — Design Log</h1>
+
+    <p><strong>GioXi 8</strong> was born from the desire to build a truly personal 8-bit computer.  
+    Not a replica, but a system combining the elegant simplicity of the <b>Z80</b> CPU with a modern co-processor — the <b>Raspberry Pi Pico</b> — handling video, audio and mass storage.</p>
+
+    <h2>The approach</h2>
+    <p>This site is not a product showcase but a journey.  
+    Each page explains one design choice: why I picked certain parts, what didn’t work, and what I learned along the way.  
+    The goal: to understand what “a computer” really is, starting from the bits.</p>
+
+    <h2>Recent steps</h2>
+    <ul>
+      <li>Testing 7805 vs MP1584 for the power section.</li>
+      <li>ROMOFF logic: ROM stays active by default.</li>
+      <li>First experiments on memory map and I/O handling.</li>
+    </ul>
+
+    <p><a href="/devlog/">→ Full development log</a></p>
   </div>
 
 </body>
 </html>
+
