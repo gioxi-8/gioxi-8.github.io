@@ -1,112 +1,90 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GioXi 8 — Diario di Progettazione</title>
-
-  <style>
-    body {
-      font-family: Poppins, sans-serif;
-      background:#fdfdfd;
-      color:#222;
-      max-width:850px;
-      margin:60px auto;
-      line-height:1.6;
-      padding:0 15px;
-    }
-
-    h2 {
-      color:#444;
-      margin-top:1.6em;
-    }
-    nav {
-      text-align:right;
-      margin-bottom:1em;
-    }
-
-    nav button {
-      background:none;
-      border:none;
-      color:#555;
-      cursor:pointer;
-      font-weight:bold;
-      margin-left:1em;
-    }
-    nav button:hover { color:#d22; }
-    .lang { display:none; }
-  </style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GioXi 8 — Diario di progettazione</title>
+  <link rel="stylesheet" href="/css/style.css">
   <noscript><style>.lang{display:block}</style></noscript>
-
   <script>
-    function setLang(lang) {
-      document.querySelectorAll('.lang').forEach(el => el.style.display='none');
-      document.querySelectorAll('.lang-'+lang).forEach(el => el.style.display='block');
-      localStorage.setItem('gioxiLang', lang);
-    }
-    window.onload = () => setLang(localStorage.getItem('gioxiLang') || 'it');
+    function setLang(l){document.querySelectorAll('.lang').forEach(e=>e.style.display='none');
+      document.querySelectorAll('.lang-'+l).forEach(e=>e.style.display='block');
+      localStorage.setItem('gioxiLang',l);}
+    window.addEventListener('DOMContentLoaded',()=>setLang(localStorage.getItem('gioxiLang')||'it'));
   </script>
 </head>
 <body>
 
-  <nav>
+  <div class="langswitch">
     <button onclick="setLang('en')">EN</button>
     <button onclick="setLang('it')">IT</button>
-  </nav>
-
-  <header style="text-align:center; margin-bottom:1em;">
-    <img src="/Logo.png" alt="GioXi 8 Logo" style="max-width:240px; height:auto;">
-  </header>
-
-
-  <!-- VERSIONE ITALIANA -->
-  <div class="lang lang-it">
-  <h1 style="display:flex;align-items:center;gap:.5rem;justify-content:center;">
-    <span>GioXi 8 — Diario di progettazione</span>
-  </h1>
-
-  <p><strong>GioXi 8</strong> è il mio esperimento: costruire un computer 8-bit oggi, spiegando ogni passo — decisioni, dubbi, errori corretti.</p>
-
-  <h2>Che cosa trovi qui</h2>
-  <ul>
-    <li><b>Perché</b> ho fatto certe scelte (e perché ne ho scartate altre).</li>
-    <li><b>Come</b> verifico le idee con conti, prove e schemi.</li>
-    <li><b>Cosa</b> rimane aperto: le decisioni in corso.</li>
-  </ul>
-
-  <h2>Decisione della settimana</h2>
-  <p><em>Power: dal 7805 al buck (MP1584)</em> — meno calore, più margine. Dettagli e conti nel devlog.</p>
-
-  <p style="margin-top:1.2em;">
-    <a href="/devlog/">→ Diario tecnico (Devlog)</a><br>
-    <a href="/design/snapshot.html">→ Stato attuale del design</a> (riassunto, cambia spesso)
-  </p>
   </div>
-  
-  <!-- ENGLISH VERSION -->
- <div class="lang lang-en">
-  <h1 style="display:flex;align-items:center;gap:.5rem;justify-content:center;">
-    <span>GioXi 8 — Design Log</span>
-  </h1>
 
-  <p><strong>GioXi 8</strong> is my experiment: building an 8-bit computer today and documenting every step — decisions, doubts, and fixes.</p>
+  <main>
+    <header class="site">
+      <!-- cambia il path se il file non è in root -->
+      <img src="/Logo.png" alt="GioXi 8 logo">
+      <nav class="top">
+        <a href="/">Home</a>
+        <a href="/devlog/">Devlog</a>
+        <a href="/design/snapshot.html">Design</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </header>
 
-  <h2>What you’ll find</h2>
-  <ul>
-    <li><b>Why</b> I picked certain options (and why I dropped others).</li>
-    <li><b>How</b> I validate ideas with math, tests, and schematics.</li>
-    <li><b>What’s</b> still open: the decisions in progress.</li>
-  </ul>
+    <!-- IT -->
+    <section class="lang lang-it">
+      <h1>GioXi 8 — Diario di progettazione</h1>
+      <p><strong>GioXi 8</strong> è il mio esperimento: costruire un computer 8-bit oggi e raccontare ogni passo — decisioni, dubbi, prove, errori e correzioni.</p>
 
-  <h2>This week’s decision</h2>
-  <p><em>Power: from 7805 to a buck (MP1584)</em> — less heat, more headroom. Full details in the devlog.</p>
+      <h2>Cosa trovi qui</h2>
+      <ul>
+        <li><b>Perché</b> scelgo un’architettura e scarto le alternative.</li>
+        <li><b>Come</b> valido le idee (conti, test, schemi).</li>
+        <li><b>Cosa</b> resta aperto: decisioni in corso.</li>
+      </ul>
 
-  <p style="margin-top:1.2em;">
-    <a href="/devlog/">→ Development Log</a><br>
-    <a href="/design/snapshot.html">→ Current Design Snapshot</a> (short, changes often)
-  </p>
-</div>
+      <div class="notice">
+        <b>Decisione della settimana:</b> alimentazione — dal 7805 al buck MP1584.<br>
+        Dettagli nel <a href="/devlog/">diario tecnico</a>.
+      </div>
+
+      <p class="mt"><a href="/devlog/">→ Diario tecnico</a> ·
+        <a href="/design/snapshot.html">→ Stato attuale del design</a></p>
+      <p><small class="muted">Ultimo aggiornamento: <!-- metti la data a mano --></small></p>
+    </section>
+
+    <!-- EN -->
+    <section class="lang lang-en">
+      <h1>GioXi 8 — Design Log</h1>
+      <p><strong>GioXi 8</strong> is my experiment: building an 8-bit computer today and documenting every step — decisions, doubts, tests, mistakes and fixes.</p>
+
+      <h2>What you’ll find</h2>
+      <ul>
+        <li><b>Why</b> I pick one architecture and drop others.</li>
+        <li><b>How</b> I validate ideas (math, tests, schematics).</li>
+        <li><b>What’s</b> still open: decisions in progress.</li>
+      </ul>
+
+      <div class="notice">
+        <b>This week’s decision:</b> power — switching from 7805 to MP1584.<br>
+        Details in the <a href="/devlog/">devlog</a>.
+      </div>
+
+      <p><a href="/devlog/">→ Development log</a> ·
+         <a href="/design/snapshot.html">→ Current design snapshot</a></p>
+      <p><small class="muted">Last update: <!-- date --></small></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 GioXi 8 — built with GitHub Pages.  
+    <ul class="inline">
+      <li><a href="https://github.com/gioxi-8">GitHub</a></li>
+      <li><a href="/devlog/">Devlog</a></li>
+      <li><a href="/design/snapshot.html">Design</a></li>
+    </ul>
+  </footer>
 <!-- GoatCounter analytics -->
 <script data-goatcounter="https://maxmastroleo.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
